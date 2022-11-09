@@ -1,0 +1,37 @@
+﻿@model StudentManagementSystem.Models.TblclassRoom
+
+@{
+    ViewData["Title"] = "InsertTBLClassRoom";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+    var datenow = DateTime.Now.ToString();
+}
+
+<h1 class="mb-2 p-3">Add New Class</h1>
+
+@*<h4 class="mb-2 p-3">TblclassRoom</h4>*@
+<hr />
+<div class ="mb-2 p-3">
+    <div class="col-md-4">
+        <form asp-action="InsertTBLClassRoom">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NameCr" class="control-label"></label>
+                <input asp-for="NameCr" class="form-control" />
+                <span asp-validation-for="NameCr" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none">
+                <label asp-for="CreaterDateCr" class="control-label"></label>
+                <br />
+                <input type="text" value="@datenow" name="CreaterDateCr" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mb-2 p-3">
+    <a asp-action="PrintTBLClassRoom">Back to List</a>
+</div>
+

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<StudentManagementSystem.Models.Tblstudent>
+
+@{
+    ViewData["Title"] = "ShowAllTBLStudent";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+}
+
+<h1>List of All Student</h1>
+
+<p>
+    @using (Html.BeginForm("SearchByName", "Home", FormMethod.Post))
+    {
+        <div class="float-left mr-2">
+            <label>Search By Name</label>
+        </div>
+
+        <div class="float-left mr-2 mb-3">
+            @Html.TextBox("SearchValue", "", htmlAttributes: new { @class = "form-control", @placeholder = "Enter key Search"})
+        </div>
+
+        <div class="float-left">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthdatSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthdatSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDateSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCr)
+            </td>
+            <td>
+                <a asp-action="DeleteTBLStudent" asp-route-id="@item.IdSt">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="mb-2 p-3">
+    <a asp-action="PrintTBLClassRoom">Back to List</a>
+</div>

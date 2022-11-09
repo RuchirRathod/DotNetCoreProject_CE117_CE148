@@ -1,0 +1,52 @@
+﻿@model StudentManagementSystem.Models.Tblstudent
+
+@{
+    ViewData["Title"] = "AddTBLStudent";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+    var datenow = DateTime.Now.ToString();
+}
+
+<h1 class="mb-2 p-3">Add New Student</h1>
+
+@*<h4 class="mb-2 p-3">Tblstudent</h4>*@
+<hr />
+<div class="mb-2 p-3">
+    <div class="col-md-4">
+        <form asp-action="AddTBLStudent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NameSt" class="control-label"></label>
+                <input asp-for="NameSt" class="form-control" />
+                <span asp-validation-for="NameSt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthdatSt" class="control-label"></label>
+                <br />
+                <input type="date" name="BirthdatSt" />
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressSt" class="control-label"></label>
+                <input asp-for="AddressSt" class="form-control" />
+                <span asp-validation-for="AddressSt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateDateSt" class="control-label"></label>
+                <br />
+                <input type="text" value="@datenow" name="CreateDateSt" />
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCr" class="control-label"></label>
+                <br />
+                <input type="text" value="@ViewBag.id" name="IdCr" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mb-2 p-3">
+    <a asp-action="PrintTBLClassRoom">Back to List</a>
+</div>
+

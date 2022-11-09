@@ -1,0 +1,70 @@
+﻿@model IEnumerable<StudentManagementSystem.Models.Tblstudent>
+
+@{
+    ViewData["Title"] = "SearchByName";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+}
+
+<h1>Search By Name</h1>
+
+<p>
+    @ViewBag.Notification
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthdatSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddressSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDateSt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCr)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthdatSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDateSt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCr)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSt">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSt">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSt">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="mb-2 p-3">
+    <a asp-action="PrintTBLClassRoom">Back to List</a>
+</div>

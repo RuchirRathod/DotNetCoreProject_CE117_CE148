@@ -1,0 +1,24 @@
+﻿@using StudentManagementSystem.Models;
+@model List<TblclassRoom>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/UsingLayout.cshtml";
+}
+
+<h1 class="text-center mt-2">List Room</h1>
+
+<div class="mb-2 p-3" >
+	@Html.ActionLink("Create Classroom", "InsertTblClassRoom", null, htmlAttributes: new {@class="btn btn-primary"})
+	@Html.ActionLink("Show Students", "ShowAllTBLStudent", null, htmlAttributes: new { @class="btn btn-primary mr-2", @type="button"})
+	@Html.ActionLink("Order by Asc", "OrderByAscId", null, htmlAttributes: new { @class="btn btn-primary mr-2", @type="button"})
+	@Html.ActionLink("Order by Dsc", "OrderByDscId", null, htmlAttributes: new { @class="btn btn-primary mr-2", @type="button"})
+	<br />
+	@foreach (var item in Model)
+	{
+		<p>Name Class: @item.NameCr</p>
+		@Html.ActionLink("Delete", "DeleteTBLClassRoom", new{ id = item.IdCr}, htmlAttributes: new { @class="btn btn-primary mr-2", @type="button"})
+		@Html.ActionLink("Add Student", "AddTBLStudent", new{ id = item.IdCr}, htmlAttributes: new { @class="btn btn-primary mr-2", @type="button"})
+		@Html.ActionLink("View Student List", "ListTBLStudent", new{ id = item.IdCr}, htmlAttributes: new { @class="btn btn-primary", @type="button"})
+		<hr />
+	}
+</div>
